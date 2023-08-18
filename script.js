@@ -1,4 +1,4 @@
-// basic math functions
+/* basic math functions */
 function add(a, b) {
   return a + b;
 }
@@ -19,8 +19,10 @@ function divide(a, b) {
   return (a / b).toFixed(8);
 }
 
-// test basic math functions 
-console.log(add(2, 3));
-console.log(subtract(2, 3));
-console.log(multiply(2, 3));
-console.log(divide(2, 0));
+let num1 = 0;
+let num2 = 0;
+let operator;
+
+function operate(operand1, operand2, operator) {
+  return operator(operand1, operand2);
+}

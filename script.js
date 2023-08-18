@@ -31,15 +31,36 @@ function operate(operand1, operand2, operator) {
 const display = document.querySelector(".display");
 
 function populateDisplay(op = 0) {
+  // TODO: as long as only operand btns are clicked,
+  // the op must concat with previous op
   display.textContent = `${op}`;
 }
 
-populateDisplay();
-
-// buttons
+// buttons nodelist
 const buttons = document.querySelectorAll("button");
+
 buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    populateDisplay(button.value);
-  });
+  button.addEventListener("click", () => determineButtonAction(button));
 });
+
+function determineButtonAction(button) {
+  // AC => clear memory DONE
+  if (button.value === "ac") {
+    clearMemory();
+  }
+  // operator => assign it to operator variable DONE
+  else if (button.classList.contains("operator")) {
+    operator = button.value;
+  } else {
+    // TODO: make up values
+    populateDisplay(button.value);
+  }
+}
+
+// clearMemory clears display, operands and operator
+function clearMemory() {
+  num1 = 0;
+  num2 = 0;
+  operator = null;
+  populateDisplay(0);
+}

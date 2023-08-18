@@ -1,8 +1,26 @@
 // basic math functions
-function add() {}
+function add(a, b) {
+  return a + b;
+}
 
-function subtract() {}
+function subtract(a, b) {
+  return a - b;
+}
 
-function multiply() {}
+function multiply(a, b) {
+  return a * b;
+}
 
-function divide() {}
+function divide(a, b) {
+  if (b === 0) {
+    return "ERROR";
+  }
+
+  return (a / b).toFixed(8);
+}
+
+// test basic math functions 
+console.log(add(2, 3));
+console.log(subtract(2, 3));
+console.log(multiply(2, 3));
+console.log(divide(2, 0));

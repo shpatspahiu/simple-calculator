@@ -86,9 +86,10 @@ button.operand {
 }
 
 button:hover {
-  background-color: aqua;
+  border-color: bisque;
 }
 
 button:active {
-  background-color: brown;
+  border-color: rgb(189, 170, 145);
+  scale: 95%;
 }

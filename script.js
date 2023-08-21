@@ -23,7 +23,7 @@ function divide(a, b) {
 let memory = {
   num1: 0,
   num2: 0,
-  enteredValue: "",
+  displayValue: "",
   operator: undefined,
 };
 
@@ -56,13 +56,62 @@ buttons.forEach((button) => {
 });
 /*------------------------------------------------*/
 
-function buttonClick(button) {}
+function buttonClick(button) {
+  /**LOGIC HERE: */
+  // when number buttons are clicked:
+  // -- update display value as long as it is needed/possible
+  if (button.classList.contains("operand")) {
+    populateDisplay(fetchDisplayValue(button.value));
+  }
+
+  // add - subtract - multiply - divide
+  if (button.classList.contains("operator")) {
+    console.log(setOperator(button.value));
+  }
+
+  // when operator buttons are clicked
+  // -- update number that is unassigned a value (that is zero)
+  // e.g. if n1 is zero then update it with display value,
+  // when operator buttons are clicked and n1 is already assigned
+  // -- update n2 with the display value
+  // --
+
+  // when equals button is clicked
+  // -- update the n2 value, make operation based on operand 1 and 2
+  // -- and the selected operator, assign result to n1, and show it on display
+  if (button.value === "=") {
+    populateDisplay(memory.num1);
+  }
+
+  // when ac button is clicked
+  // -clear the memory:
+  // -- remove all that displayValue contains
+  // -- set display to zero
+  // -- delete num1 num2 and operator values
+  if (button.value === "ac") clearMemory();
+}
 
 // clearMemory clears display, operands and operator
-function clearMemory() {}
+function clearMemory() {
+  memory.num1 = 0;
+  memory.num2 = 0;
+  memory.displayValue = "";
+  memory.operator = undefined;
+  populateDisplay();
+}
 
-function parseEnteredValue(digit) {
-  if (memory.enteredValue.length < 9) {
-    memory.enteredValue += digit;
+function setOperator(value) {
+  memory.operator = value;
+  return memory.operator;
+}
+
+// if there is a digit and displayValue doesn't exceed 8 numbers
+// add the digit to the displayValue
+
+// else just return the value of displayValue
+function fetchDisplayValue(digit) {
+  if (digit && memory.displayValue.length < 8) {
+    memory.displayValue += digit;
   }
+  return memory.displayValue;
 }

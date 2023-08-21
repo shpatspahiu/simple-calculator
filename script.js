@@ -18,49 +18,51 @@ function divide(a, b) {
 
   return (a / b).toFixed(8);
 }
+/* ------------------------------------- */
 
-let num1 = 0;
-let num2 = 0;
-let operator;
+let memory = {
+  num1: 0,
+  num2: 0,
+  enteredValue: "",
+  operator: undefined,
+};
 
+/* Operate performs operator on operand1 and operand2 */
 function operate(operand1, operand2, operator) {
-  return operator(operand1, operand2);
+  switch (operator) {
+    case "add":
+      return add(operand1, operand2);
+    case "subtract":
+      return subtract(operand1, operand2);
+    case "multiply":
+      return multiply(operand1, operand2);
+    case "divide":
+      return divide(operand1, operand2);
+  }
 }
 
-// display
+/*-----------DISPLAY------------------------------*/
 const display = document.querySelector(".display");
-
-function populateDisplay(op = 0) {
-  // TODO: as long as only operand btns are clicked,
-  // the op must concat with previous op
-  display.textContent = `${op}`;
+// shows content on screen
+function populateDisplay(value = "0") {
+  display.textContent = `${value}`;
 }
+/*------------------------------------------------*/
 
-// buttons nodelist
+/*-----------Button Setup-------------------------*/
 const buttons = document.querySelectorAll("button");
-
 buttons.forEach((button) => {
-  button.addEventListener("click", () => determineButtonAction(button));
+  button.addEventListener("click", () => buttonClick(button));
 });
+/*------------------------------------------------*/
 
-function determineButtonAction(button) {
-  // AC => clear memory DONE
-  if (button.value === "ac") {
-    clearMemory();
-  }
-  // operator => assign it to operator variable DONE
-  else if (button.classList.contains("operator")) {
-    operator = button.value;
-  } else {
-    // TODO: make up values
-    populateDisplay(button.value);
-  }
-}
+function buttonClick(button) {}
 
 // clearMemory clears display, operands and operator
-function clearMemory() {
-  num1 = 0;
-  num2 = 0;
-  operator = null;
-  populateDisplay(0);
+function clearMemory() {}
+
+function parseEnteredValue(digit) {
+  if (memory.enteredValue.length < 9) {
+    memory.enteredValue += digit;
+  }
 }

@@ -67,7 +67,7 @@ button {
   border-radius: 8px;
 }
 
-button.operator {
+button.operator, button.equals, button.floating-point {
   background-color: rgb(179, 98, 0);
   color: black;
 }

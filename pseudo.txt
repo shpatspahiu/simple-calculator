@@ -2,16 +2,13 @@
 1. kur perdorusi shtyp ni button,
 
  1.a nese ai buton eshte button i numrave
-- nese variabla operator, eshte e definuar (pra permnban nje operator)
-    -- atehere beje rastin nen 1.a
-
  - inicializo kalulimin
-    1.a kaloje vleren e shtypur ne nje variabel (displayValue) dhe shfaqe ne ekran numrin.
+    1.x kaloje vleren e shtypur ne nje variabel (displayValue) dhe shfaqe ne ekran numrin.
     - derisa te mos shtypet ndonje lloj tjeter i butonave, le te bohen
     - append numrat njo mas njo ne ate variabel (displayValue) dhe le te behet update 
     - ekrani per me e shfaq numrin e kerkuar.
 
-1.b nese ai button eshte nje button tjeter pos button i numrave
+ 1.b nese ai button eshte nje button tjeter pos button i numrave
 
     b.0 nese ai button eshte nje button i operatoreve
         -0.a nese kalkulimi nuk u inicializu, mos bon kurgjo

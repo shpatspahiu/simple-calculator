@@ -16,7 +16,7 @@ function divide(a, b) {
     return "ERROR";
   }
 
-  return (a / b).toFixed(8);
+  return (a / b).toFixed(2);
 }
 /* ------------------------------------- */
 
@@ -60,17 +60,17 @@ buttons.forEach((button) => {
 function buttonClick(button) {
   // NUMBER CLICK
   if (button.classList.contains("operand")) {
-    operandBtn(button);
+    operandClick(button);
   }
 
   // ADD SUBTRACT MULTIPLY DIVIDE CLICK
   if (button.classList.contains("operator")) {
-    operatorBtn(button);
+    operatorClick(button);
   }
 
   // EQUALS CLICK:
   if (button.classList.contains("equals")) {
-    equalsBtn();
+    equalsClick();
   }
 
   // AC CLICK:
@@ -78,11 +78,36 @@ function buttonClick(button) {
 }
 // *********************************************************** \\
 
-function operandBtn(button) {}
+function operandClick(button) {
+  memory.calculationStarted = true;
+  populateDisplay(fetchDisplayValue(button.value));
+}
 
-function operatorBtn() {}
+function operatorClick(button) {
+  if (!memory.calculationStarted) {
+    console.log("calculation hasnt started");
+    return;
+  }
 
-function equalsBtn() {}
+  // if num1 is not assigned a value
+  if (!memory.num1) {
+    memory.num1 = Number(memory.displayValue);
+    console.log(`num1 is: ${memory.num1}`);
+    // reset displayValue
+    memory.displayValue = "";
+  } else {
+    memory.num2 = Number(memory.displayValue);
+    console.log(`num2 is: ${memory.num2}`);
+    memory.num1 = operate(memory.num1, memory.num2, memory.operator);
+    populateDisplay(memory.num1);
+    memory.num2 = 0;
+  }
+
+  // assign new operator
+  memory.operator = button.value;
+
+  memory.displayValue = "";
+}
 
 // clearMemory clears display, operands and operator
 function clearMemory() {

@@ -1,33 +1,44 @@
-e shtypim ni number tpar ne tastiere 
-    psh 15
-    kjo vlere shkruhet ne displayValue edhe metet aty per me vazhdu me kalkulim
-    (themi se dojm 15 me bo 150), atere displayValue duhet me u bo update ne 150
-    (pra displayvalue duhet me ndegju per vlera perderisa: 
-        1. shtypen numra treja,
-        2. nuk kalohet numri i pranum per kalkulim (psh deri numra 8shifror punon kalkulatori
-        3. perderisa nuk u shtyp naj + - * /)
+
+1. kur perdorusi shtyp ni button,
+
+ 1.a nese ai buton eshte button i numrave
+- nese variabla operator, eshte e definuar (pra permnban nje operator)
+    -- atehere beje rastin nen 1.a
+
+ - inicializo kalulimin
+    1.a kaloje vleren e shtypur ne nje variabel (displayValue) dhe shfaqe ne ekran numrin.
+    - derisa te mos shtypet ndonje lloj tjeter i butonave, le te bohen
+    - append numrat njo mas njo ne ate variabel (displayValue) dhe le te behet update 
+    - ekrani per me e shfaq numrin e kerkuar.
+
+1.b nese ai button eshte nje button tjeter pos button i numrave
+
+    b.0 nese ai button eshte nje button i operatoreve
+        -0.a nese kalkulimi nuk u inicializu, mos bon kurgjo
+
+        -0.b nese eshte inicializu,
+         ** kqyre a duhet me e mbush operandin 1 apo 2
+           * nese duhet 1
+                -- kaloja vleren e displayValue operandit 1 ,
+           * nese duhet 2
+                -- kaloja vleren e displayValue operandit 2 ,
+                *.a performoje funksonin operate(operand1,operand2, operator)
+                    -- rezultatin e saj kaloja operandit1
+                    -- shaqe operandin 1 ne display
+                    -- resetoje vleren e operandit2
+        -- resetoje vleren ne displayValue per perdorim te mevonshem
+        -- kaloje operatorin e ri te shtypur ne button, variables qe e mban operatorin
+
+
+
+
+    b.1 nese ai button eshte buttoni i barazimit
+        1.a nese kalkulimi u inicializu,
+            - nese operatori ka nje vlere (pra eshte i definuar)
+            - nese operand2 nuk eshte i barabarte me 0
+            atehere beje rastin nen *.a
         
-    Prej ktyne 3 pikave, kur shtypet e 3. pritet ky veprim:
-        kur shtypet + apo - apo * apo /:
-            - shfaqe num1 shin prap ne display
-            a. nese shtypen numra trinj, displayValue duhet qe vleren qe e ka, tia kaloje
-            numrave per kalkulim.
-                1. num1 shit nese num1shi asnihere nuk u assignu, pastaj te resetohet displayValue,
-                 dhe te pres per vlera te reja qe shtypen ti paraqes edhe nekran edhe ti ruaj.
 
-                2. num2 shit nese num1shi u ka asignu veqse
-                    - nese i assignohet num2 shit duhet qe:
-                        * te kryhet kalkulimi operate(num1,num2,operator) dhe ti
-                        kalohet kjo vlere num1 shit
-                        * te asignohet operatori i ri qe u shtyp   
-                        * te resetohet num2 shi ne 0
-                        *** te resetohet displayValue dhe ta pret veprimin tjeter,   
-                            *** per arsye se me ket rast mund te vazhdojme ende kalkulime, prej
-                            step 2.
+    b.2 nese ai button eshte button i . dhjetore
+        
 
-                b. nese shtypet naj operator tjeter, te zevendesohet atehere cilido operator paraprak
-
-            c. nese shtypet 'equals' pra =, atehere le te kontrollohet se a i kemi vlerat e duhura:
-                -specifikisht: a e kemi num1, num2 dhe operatorin
-            
-                - nese shtypet 'equals' atehere duhet te behet e njejta si ne 2. ylli i pare (kqyr nalt)

@@ -16,7 +16,7 @@ function divide(a, b) {
     return "ERROR";
   }
 
-  return (a / b).toFixed(2);
+  return Number((a / b).toFixed(8));
 }
 /* ------------------------------------- */
 
@@ -93,18 +93,22 @@ function operatorClick(button) {
 
   // if num1 is not assigned a value
   if (!memory.num1) {
-    memory.num1 = Number(memory.displayValue);
-    console.log(`num1 is: ${memory.num1}`);
+    memory.num1 = assignOperand();
     // reset displayValue
     memory.displayValue = "";
   } else {
-    memory.num2 = Number(memory.displayValue);
+    memory.num2 = assignOperand();
+    console.log(`num1 is: ${memory.num1}`);
     console.log(`num2 is: ${memory.num2}`);
     if (memory.operator) {
       memory.num1 = operate(memory.num1, memory.num2, memory.operator);
     }
     populateDisplay(memory.num1);
     memory.num2 = 0;
+  }
+
+  function assignOperand() {
+    return Number(memory.displayValue);
   }
 
   // assign new operator

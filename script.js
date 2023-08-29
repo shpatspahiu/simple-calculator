@@ -138,7 +138,13 @@ function setOperator(value) {
 // FETCH DISPLAY VALUE
 function fetchDisplayValue(digit) {
   if (digit && memory.displayValue.length < 8) {
-    memory.displayValue += digit;
+    if (digit === ".") {
+      if (!memory.displayValue.includes(".")) {
+        memory.displayValue += digit;
+      }
+    } else {
+      memory.displayValue += digit;
+    }
   }
   return memory.displayValue;
 }

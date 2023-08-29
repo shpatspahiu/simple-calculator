@@ -142,9 +142,7 @@ function fetchDisplayValue(entry) {
       if (!memory.displayValue.includes(".")) {
         memory.displayValue += entry;
       }
-    }
-
-    if (entry === "-") {
+    } else if (entry === "-") {
       if (memory.displayValue.charAt(0) === "-") {
         memory.displayValue = memory.displayValue.substring(1);
       } else {

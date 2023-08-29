@@ -136,14 +136,22 @@ function setOperator(value) {
 }
 
 // FETCH DISPLAY VALUE
-function fetchDisplayValue(digit) {
-  if (digit && memory.displayValue.length < 8) {
-    if (digit === ".") {
+function fetchDisplayValue(entry) {
+  if (entry && memory.displayValue.length < 8) {
+    if (entry === ".") {
       if (!memory.displayValue.includes(".")) {
-        memory.displayValue += digit;
+        memory.displayValue += entry;
+      }
+    }
+
+    if (entry === "-") {
+      if (memory.displayValue.charAt(0) === "-") {
+        memory.displayValue = memory.displayValue.substring(1);
+      } else {
+        memory.displayValue = entry + memory.displayValue;
       }
     } else {
-      memory.displayValue += digit;
+      memory.displayValue += entry;
     }
   }
   return memory.displayValue;

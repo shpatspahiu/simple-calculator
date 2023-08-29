@@ -58,6 +58,11 @@ buttons.forEach((button) => {
 /*------------------------------------------------*/
 // *********************************************************** \\
 function buttonClick(button) {
+  // EQUALS CLICK:
+  if (button.classList.contains("equals")) {
+    equalsClick();
+  }
+
   // NUMBER CLICK
   if (button.classList.contains("operand")) {
     operandClick(button);
@@ -68,15 +73,12 @@ function buttonClick(button) {
     operatorClick(button);
   }
 
-  // EQUALS CLICK:
-  if (button.classList.contains("equals")) {
-    equalsClick();
-  }
-
   // AC CLICK:
   if (button.value === "ac") clearMemory();
 }
 // *********************************************************** \\
+
+function equalsClick() {}
 
 function operandClick(button) {
   memory.calculationStarted = true;
@@ -98,14 +100,19 @@ function operatorClick(button) {
   } else {
     memory.num2 = Number(memory.displayValue);
     console.log(`num2 is: ${memory.num2}`);
-    memory.num1 = operate(memory.num1, memory.num2, memory.operator);
+    if (memory.operator) {
+      memory.num1 = operate(memory.num1, memory.num2, memory.operator);
+    }
     populateDisplay(memory.num1);
     memory.num2 = 0;
   }
 
   // assign new operator
-  memory.operator = button.value;
-
+  if (button.value === "equals") {
+    memory.operator = undefined;
+  } else {
+    memory.operator = button.value;
+  }
   memory.displayValue = "";
 }
 

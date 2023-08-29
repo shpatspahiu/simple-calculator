@@ -1,14 +1,14 @@
 /* basic math functions */
 function add(a, b) {
-  return a + b;
+  return Number((a + b).toFixed(8));
 }
 
 function subtract(a, b) {
-  return a - b;
+  return Number((a - b).toFixed(8));
 }
 
 function multiply(a, b) {
-  return a * b;
+  return Number((a * b).toFixed(8));
 }
 
 function divide(a, b) {
